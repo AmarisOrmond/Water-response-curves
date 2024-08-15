@@ -1,3 +1,5 @@
+#### load packages
+
 library(plotly)
 library(readxl)
 library(tidyverse)
@@ -23,11 +25,12 @@ library(devtools)
 library(tidyverse)
 
 
-theme(legend.key.size = unit(0.9, "cm"), legend.title=element_blank())
 
-##################### subset the data set ######################
+  
+  ## plot all species individually 
 
-Lp <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Lobaria pulmonaria")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Lp <- 
+  ggplot(subset(Water_response_github, Species %in% c("Lobaria pulmonaria")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate))  +
   geom_line(linewidth = 0.1) +
@@ -42,29 +45,29 @@ Lp <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Lobaria pulmo
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.position = "none") +
   theme(axis.title.y = element_text(vjust = +0.1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
-  theme(plot.title=element_text(vjust = -10)) + 
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
   ggtitle("A") +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-  theme(plot.title=element_text(hjust = 0.7))+
-  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
   scale_y_continuous(breaks=seq(-10,30, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) +
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+ 
   scale_colour_manual(values = c("gray22", "slategrey", "slategray3", "gray22", "slategrey", "slategray3")) +
-scale_shape_manual(values = c(1, 0, 2, 19, 15, 17))
-
+scale_shape_manual(values = c(1, 0, 2, 19, 15, 17)) 
 
 
 ######### Sticta sylvatica  ##############
 
-Ss <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta sylvatica")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Ss <- ggplot(subset(Water_response_github, Species %in% c("Sticta sylvatica")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
@@ -79,18 +82,19 @@ Ss <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta sylvat
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.position = "none") +
   theme(axis.title.y = element_text(vjust = +1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
   ggtitle("D") +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
   theme(legend.title = element_text( size =14)) +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-  theme(plot.title=element_text(hjust = 0.7)) +
-  theme(plot.title=element_text(vjust = -10)) + 
-  theme(plot.title = element_text(size = 14)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
   scale_y_continuous(breaks=seq(-10,50, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) +
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
@@ -99,9 +103,11 @@ Ss <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta sylvat
   scale_shape_manual(values = c(1, 0, 2, 19, 15, 17))
 
 
+
+
 ##### Hypotrachyna laevigata ###### 
 
-Hl <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Hypotrachyna laevigata")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Hl <- ggplot(subset(Water_response_github, Species %in% c("Hypotrachyna laevigata")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
@@ -114,18 +120,19 @@ Hl <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Hypotrachyna 
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.position = "none") +
   theme(axis.title.y = element_text(vjust = +1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
-  ggtitle("F") +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
+   ggtitle("F") +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
   theme(legend.title = element_text( size =14)) +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-  theme(plot.title=element_text(hjust = 0.7)) +
-  theme(plot.title=element_text(vjust = -10)) + 
-  theme(plot.title = element_text(size = 14)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
   scale_y_continuous(breaks=seq(-10,30, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) +
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
@@ -135,16 +142,20 @@ Hl <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Hypotrachyna 
 
 
 
+
+
+
+
 ##### Sticta limbata ######
 
-Sl <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta limbata")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Sl <-  ggplot(subset(Water_response_github, Species %in% c("Sticta limbata")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
   labs(y= "", x = "") +
   ylab(expression(CO[2]~assimilation ~ (nmol ~ g^{-1}~s^{-1})))+
   theme(axis.title.x = element_blank()) +
-  coord_cartesian(xlim =c(0,0.6 ), ylim = c(-20, 50))+
+  coord_cartesian(xlim =c(0,0.6), ylim = c(-20, 50)) +
   annotate("rect", xmin = 0.13, xmax = 0.18, ymin = -20, ymax = 50, alpha = .1,fill = "grey1") +
   geom_hline(yintercept=0, linetype = 2, colour = "black", size = 0.1) +
   theme(axis.line = element_line(colour = "black"),
@@ -152,19 +163,20 @@ Sl <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta limba
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(axis.title.y = element_text(vjust = +0.1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
   theme(legend.key.size = unit(0.5, "cm")) +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
   ggtitle("C") +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
   theme(legend.position = "none") +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-  theme(plot.title=element_text(hjust = 0.7)) +
-  theme(plot.title=element_text(vjust = -10)) + 
-  theme(plot.title = element_text(size = 14)) +
-  scale_y_continuous(breaks=seq(-20,50, by=5), expand= c(0,0)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
+  scale_y_continuous(breaks=seq(-20,50, by=10), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) +
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+ 
@@ -174,7 +186,7 @@ Sl <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Sticta limba
 
 ##### Ramalina calicaris  ######
 
-Rc <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Ramalina calicaris")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Rc <-  ggplot(subset(Water_response_github, Species %in% c("Ramalina calicaris")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
@@ -188,19 +200,20 @@ Rc <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Ramalina cal
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.text = element_text (face = "italic")) +
   theme(axis.title.y = element_text(vjust = +1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
   theme(legend.position = "none") +
-  ggtitle("B") +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
+   ggtitle("B") +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
   theme(legend.title = element_text( size =14)) +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-   theme(plot.title=element_text(hjust = 0.7)) +
-  theme(plot.title=element_text(vjust = -10)) + 
-  theme(plot.title = element_text(size = 14)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
   scale_y_continuous(breaks=seq(-10,30, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) + 
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
@@ -210,9 +223,12 @@ Rc <-  ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Ramalina cal
 
 
 
+
+
 ##### Ricasolia virens ######
 
-Rv <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Lobaria virens")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+
+Rv <- ggplot(subset(Water_response_github, Species %in% c("Lobaria virens")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
@@ -227,19 +243,19 @@ Rv <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Lobaria viren
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.text = element_text (face = "italic")) +
   theme(axis.title.y = element_text(vjust = +0.1)) +
   theme(axis.title.x = element_text(vjust = 0.5)) +
   theme(legend.position = "none") +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
   ggtitle("E") +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
-  
-  theme(plot.title=element_text(hjust = 0.76)) +
-  theme(plot.title=element_text(vjust = -10)) + 
-  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -63.5)) + 
+  theme(plot.title=element_text(hjust = 0.01)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
   scale_y_continuous(breaks=seq(-10,30, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,0.6, by=0.1), expand= c(0,0)) + 
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+  ###### add margins to plot so that it looks good in grid arrangemnet. Numbers are bottom, left, top, right############## 
@@ -247,9 +263,11 @@ scale_colour_manual(values = c("forestgreen", "chartreuse3", "forestgreen", "cha
   scale_shape_manual(values = c(1, 0, 2, 19, 15, 17))
 
 
+
+
 ########## Pectenia atlantica ##########
 
-Pa <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Pectenia atlantica")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
+Pa <- ggplot(subset(Water_response_github, Species %in% c("Pectenia atlantica")), aes(x = Wc_mm, y = Np, colour = Replicate, fill = Replicate)) +
   geom_point(aes(shape= Replicate),size =1.8)+
   geom_line(aes(color = Replicate)) +
   geom_line(linewidth = 0.1) +
@@ -257,25 +275,26 @@ Pa <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Pectenia atla
   ylab(expression(CO[2]~assimilation ~ (nmol ~ g^{-1}~s^{-1}))) +
   annotate("rect", xmin = 1.08, xmax = 1.69, ymin = -10, ymax = 30, alpha = .1,fill = "grey1") + 
   xlab(expression(Thallus~water~content ~ (mm~H[2]*O ~precipitation~equivalent))) +
-  coord_cartesian(xlim =c(0,3 ), ylim = c(-10, 30))+
+  coord_cartesian(xlim =c(0,3), ylim = c(-10, 30))+
   geom_hline(yintercept=0, linetype = 2, colour = "black", size =0.1)+
   theme(axis.line = element_line(colour = "black"),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         panel.background = element_blank())+
-  theme(axis.title.y = element_text(size = 16)) +
-  theme(axis.title.x = element_text(size = 16)) +
+  theme(axis.title.y = element_text(size = 20)) +
+  theme(axis.title.x = element_text(size = 20)) +
   theme(legend.text = element_text (face = "italic")) +
-  theme(axis.text.y = element_text(size=14)) +
-  theme(axis.text.x = element_text(size=14)) +
+  theme(axis.text.y = element_text(size=20)) +
+  theme(axis.text.x = element_text(size=20)) +
   theme(axis.title.y = element_text(vjust = +0.1)) +
   theme(axis.title.x = element_text(vjust = 0.7)) +
   theme(legend.position = "none") +
+  theme(axis.text.y = element_text(vjust = +0.1)) +
   ggtitle("G") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title=element_text(hjust = 0.76)) +
-  theme(plot.title=element_text(vjust = -10)) + 
+  theme(plot.title = element_text(size = 20)) +
+  theme(plot.title=element_text(vjust = -62)) + 
+  theme(plot.title=element_text(hjust = 0.01)) + 
   scale_y_continuous(breaks=seq(-10,30, by=5), expand= c(0,0)) +
   scale_x_continuous(breaks=seq(0,3, by=0.5), expand= c(0,0)) + 
   theme(plot.margin=unit(c(0,1,0,0),"cm"))+
@@ -283,8 +302,10 @@ Pa <- ggplot(subset(Water_Resposne_Curves_RStudio, Species %in% c("Pectenia atla
   scale_shape_manual(values = c(1, 0, 2, 19, 15, 17))
     
     
-  ### set layout for plots ## done in two sections, can be done in a single plot ###  
     
+  
+#### arrange adn plot
+
 layout1 <- rbind(c(1,2), ##row 1, column 2 and 3 same size
                  c(3,4))
 
@@ -292,12 +313,30 @@ layout2 <- rbind(c(1,2), ##row 2 elongated
                  c(3,3))
 ##########################################################################
 
-###The size of the plot is the size of your current graphics device. Change that, and your plot will automatically adjust. If you want to set the size while saving to disk, use ggsave() and set the plot size arguments. – 
 
-### PLOT
+
 grid.arrange(Lp, Rc, Sl, Ss, ncol = 2, nrow = 2, layout_matrix = layout1)
 
+
 grid.arrange(Rv, Hl, Pa, ncol = 2, nrow = 2, layout_matrix = layout2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
