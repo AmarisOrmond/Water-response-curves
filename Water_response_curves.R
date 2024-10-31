@@ -304,19 +304,16 @@ Pa <- ggplot(subset(Water_response_github, Species %in% c("Pectenia atlantica"))
     
     
   
-#### arrange adn plot
+#### arrange and plot 
 
 layout1 <- rbind(c(1,2), ##row 1, column 2 and 3 same size
                  c(3,4))
 
 layout2 <- rbind(c(1,2), ##row 2 elongated 
                  c(3,3))
-##########################################################################
-
 
 
 grid.arrange(Lp, Rc, Sl, Ss, ncol = 2, nrow = 2, layout_matrix = layout1)
-
 
 grid.arrange(Rv, Hl, Pa, ncol = 2, nrow = 2, layout_matrix = layout2)
 
